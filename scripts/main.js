@@ -3,7 +3,7 @@ let cols = [Pal.lancerLaser, Pal.accent, Color.valueOf("cc6eaf")];
 
 function addTable(table){
     table.table(Styles.black5, cons(t => {
-        t.background(Tex.buttonEdge3);
+        t.background(Tex.button);
         let s = new Slider(-8, 8, 1, false);
         s.setValue(0);
         let l = t.label(() => {
@@ -23,6 +23,8 @@ function addTable(table){
             l.color(Tmp.c1.lerp(cols, (s.getValue() + 8) / 16));
         });
     }));
+    //add margin for v7
+    if (Vars.mobile) table.marginBottom(50);
     table.fillParent = true;
     table.visibility = () => {
         if(!Vars.ui.hudfrag.shown) return false;
